@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+ class node {
+public:
+  int data;
+  node*next;
+  node(){
+    this->data =0;
+    this->next =NULL;
+    
+  }
+node(int data){
+  this->data = data;
+  this->next =NULL;
+}
+ };
+
+void insertathead(node*&first,int data){
+  //step1:create a new node
+ node*second =new node(data);
+  //step2:assign next to first
+  second->next=first;
+  //step3:make second =head
+  first =second ;
+}
+void print(node*first){
+  node*temp=first;
+  while(temp!=NULL){
+    cout<<temp->data <<" ";
+    temp=temp->next;
+  }
+}
+int main() {
+node*first =new node(3);
+  insertathead(first,33);
+   insertathead(first,23);
+  print(first);
+}
