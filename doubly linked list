@@ -1,0 +1,98 @@
+#include <bits/stdc++.h>
+using namespace std;
+class node{
+public:
+int data;
+node*next;
+node*prev;
+node(){
+this->data=0;
+this->prev=NULL;
+this->next=NULL;
+}
+node(int data){
+  this->data=data;
+this->prev=NULL;
+this->next=NULL;
+}
+};
+int getlength(node*&head){
+   node*temp=head;
+  int len =0;
+  while(temp!=NULL){
+    len++;
+    temp=temp->next;
+  }
+  return len;
+}
+void insertathead(node*&head,node*&tail,int data){
+  if(head==NULL){
+    node*newnode=new node(data);
+    head=newnode;
+    tail=newnode;
+    return;
+  }
+   node*newnode=new node(data);
+  newnode->next=head;
+  head->prev=newnode;
+  head=newnode;
+}
+void insertattail(node*&head,node*&tail,int data){
+   if(head==NULL){
+    node*newnode=new node(data);
+    head=newnode;
+    tail=newnode;
+     return;
+  }
+   node*newnode=new node(data);
+  tail->next=newnode;
+  newnode->prev=tail;
+  tail=newnode;
+}
+void insertatposition(node*&head,node*&tail,int data,int position){
+   if(head==NULL){
+     node*newnode=new node(data);
+    head=newnode;
+    tail=newnode;
+     return;
+  }
+  if(position==1){
+    insertathead(head,tail,data);
+    return;
+  }
+  int len=getlength(head);
+  if(position==len){
+    insertattail(head,tail,data);
+    return;
+  }
+  int i=1;
+node*prevnode=head;
+  while(i<position-1){
+    prevnode=prevnode->next;
+    i++;
+  }
+  node*curr =prevnode->next;
+   node*newnode=new node(data);  
+  newnode->prev=prevnode;
+  newnode->next=curr;
+  prevnode->next=newnode;
+  curr->prev=newnode;
+}
+void print(node*&head){
+  node*temp=head;
+  while(temp!=NULL){
+    cout<<temp->data<<"  ";
+    temp=temp->next;
+  }
+}
+int main() {
+  node*head=new node(5);
+  node*tail=new node(4);
+  head->next=tail;
+  insertathead(head,tail,6);
+  insertathead(head,tail,7);
+  insertattail(head,tail,2);
+  insertattail(head,tail,1);
+ insertatposition(head,tail,3,5);
+  print(head);
+}
