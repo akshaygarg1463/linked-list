@@ -1,0 +1,73 @@
+#include <bits/stdc++.h>
+using namespace std;
+ class node {
+public:
+  int data;
+  node*next;
+  node(){
+    this->data =0;
+    this->next =NULL;
+    
+  }
+node(int data){
+  this->data = data;
+  this->next =NULL;
+}
+ };
+
+void insertathead(node*&first,int data){
+  //step1:create a new node
+ node*second =new node(data);
+  //step2:assign next to first
+  second->next=first;
+  //step3:make second =head
+  first =second ;
+}
+void print(node*head){
+  node*temp=head;
+  while(temp!=NULL){
+    cout<<temp->data <<" ";
+    temp=temp->next;
+  }
+}
+node*reverse(node*&prev,node*&curr){
+  if(curr==NULL){
+    return prev;
+  }
+  node*next=curr->next;
+  curr->next=prev;
+ return  reverse(curr,next);
+ // return;
+//  return ;
+}
+node*findmiddle(node*&head){
+  if(head==NULL){
+    cout<<"invalid";
+  }
+  if(head->next==NULL){
+    return head;
+  }
+  node*slow=head;
+  node*fast=head;
+ while(slow!=NULL&&fast!=NULL){
+   fast=fast->next;
+   if(fast!=NULL){
+     slow=slow->next;
+     fast=fast->next;
+   }
+ } 
+  return slow;
+}
+int main() {
+node*head =new node(3);
+  insertathead(head,33);
+   insertathead(head,23);
+  print(head);
+  cout<<endl;
+  node*prev=NULL;
+  node*curr=head;
+head=  reverse(prev,curr);
+  print(head);
+  cout<<endl;
+ cout<< findmiddle(head)->data;
+}
