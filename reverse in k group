@@ -1,0 +1,100 @@
+#include <bits/stdc++.h>
+using namespace std;
+class node{
+public:
+int data;
+node* next;
+node(){
+  this->data=0;
+  this->next=NULL;
+}
+node(int data){
+  this->data=data;
+  this->next=NULL;
+}
+};
+int findlength(node*&head){
+  int len=0;
+  node*temp=head;
+  while(temp!=NULL){
+    temp=temp->next;
+    len++;
+  }
+  return len;
+}
+void insertathead(node*&head,int data){
+  if(head==NULL)
+  {
+    node*newnode=new node(data);
+    head=newnode;
+  }
+  node*newnode=new node(data);
+  newnode->next=head;
+  head=newnode;
+}
+node*findmiddle(node*&head){
+    if(head==NULL)
+  {
+   cout<<"invalid";
+  }
+  if(head->next==NULL){
+    return head;
+  }
+  node*slow=head;
+  node*fast=head;
+ 
+  while(slow!=NULL&&fast!=NULL){
+     fast=fast->next;
+    if(fast!=NULL){
+    fast=fast->next;
+    slow=slow->next;
+    }
+  }
+  return slow;
+}
+node*reversekgroup(node*&head,int k){
+     if(head==NULL)
+  {
+   cout<<"invalid";
+  }
+  int len=findlength(head);
+if(len<k){
+  return head;
+}
+  node*prev=NULL;
+  node*curr=head;
+  node*forward=curr->next;
+ int count=0;
+  while(count<k){
+  forward=curr->next;
+    curr->next=prev;
+    prev=curr;
+    curr=forward;
+    count++;
+  }
+  if(forward!=NULL){
+   head->next=reversekgroup(forward,k);
+  }
+  return prev;
+} 
+void print(node*&head){
+  node*temp=head;
+  while(temp!=NULL){
+    cout<<temp->data<<" ";
+    temp=temp->next;
+  }
+  
+}
+int main() {
+node*head=new node(5);
+  insertathead(head,4);
+   insertathead(head,3);
+   insertathead(head,2);
+   insertathead(head,1);
+  print (head);
+  cout<<endl;
+cout<<findmiddle(head)->data;
+  cout<<endl;
+  head =reversekgroup(head,2);
+  print(head);
+}
