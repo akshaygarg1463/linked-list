@@ -1,0 +1,57 @@
+#include <bits/stdc++.h>
+using namespace std;
+class node{
+public:
+int data;
+node* next;
+node(){
+  this->data=0;
+  this->next=NULL;
+}
+node(int data){
+  this->data=data;
+  this->next=NULL;
+}
+};
+void insertathead(node*&head,int data){
+  if(head==NULL)
+  {
+    node*newnode=new node(data);
+    head=newnode;
+  }
+  node*newnode=new node(data);
+  newnode->next=head;
+  head=newnode;
+}
+bool checkloop(node*&head){
+    if(head==NULL)
+  {
+  // cout<<"invalid";
+    return false;
+  }
+  node*slow =head;
+  node*fast=head;
+  while(fast!=NULL){
+    fast=fast->next;
+    if(fast!=NULL){
+      fast=fast->next;
+      slow=slow->next;
+    }
+    if(slow==fast){
+      return true;
+    }
+  }
+  return false;
+}
+int main() {
+   node*head=new node(5);
+   node*second=new node(10);
+   head->next=second;
+   second->next=head;
+   insertathead(head,4);
+   insertathead(head,3);
+   insertathead(head,2);
+   insertathead(head,1);
+cout<< checkloop(head);
+  cout<<endl;
+}
