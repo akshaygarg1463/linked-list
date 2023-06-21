@@ -1,0 +1,72 @@
+#include <bits/stdc++.h>
+using namespace std;
+class node{
+public:
+int data;
+node* next;
+node(){
+  this->data=0;
+  this->next=NULL;
+}
+node(int data){
+  this->data=data;
+  this->next=NULL;
+}
+};
+void print(node*&head){
+  node*temp=head;
+  while(temp!=NULL){
+    cout<<temp->data<<" ";
+    temp=temp->next;
+  } }
+void sortzeroonetwo(node*&head){
+  int zero=0;
+  int one=0;
+  int two=0;
+  node*temp=head;
+  while(temp!=NULL){
+    if(temp->data==0){
+      zero++;
+    }
+     else if(temp->data==1){
+      one++;
+    }
+    else if(temp->data==2){
+      two++;
+    }
+   temp=temp->next; 
+  }
+  temp=head;
+  while(temp!=NULL){
+    while(zero--){
+      temp->data=0;
+      temp=temp->next;
+    }
+    while(one--){
+      temp->data=1;
+       temp=temp->next;
+    }
+    while(two--){
+      temp->data=2;
+       temp=temp->next;
+    }
+  }
+}
+int main() {
+   node*head=new node(2);
+   node*second=new node(1);
+  node*third=new node(0);
+  node*forth=new node(0);
+  node*fifth=new node(2);
+   node*sixth=new node(0);
+   head->next=second;
+  second->next=third;
+  third->next=forth;
+  forth->next=fifth;
+  fifth->next=sixth;
+  print(head);
+  cout<<endl;
+//removeduplicatenodes(head);
+  sortzeroonetwo(head);
+   print(head);
+}
