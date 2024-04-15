@@ -1,0 +1,9 @@
+{
+	"name": "zingmind-adf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "89937c69-3d03-4603-93ab-63b1fec2d5c1",
+		"tenantId": "3b455d43-cd5d-4b3c-8401-ed144aa64c3b"
+	}
+}

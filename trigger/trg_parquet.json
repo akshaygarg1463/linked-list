@@ -1,0 +1,24 @@
+{
+	"name": "trg_parquet",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Generate Parquet File",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 2,
+				"startTime": "2024-04-15T05:11:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

@@ -1,0 +1,25 @@
+{
+	"name": "Ds_Parqute",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Parqute",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"Account_Name": "zingmindstorage1463"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "zingmind.parquet",
+				"folderPath": "file",
+				"container": "files"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
