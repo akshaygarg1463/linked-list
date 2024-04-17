@@ -1,0 +1,72 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1_source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Step_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SOURCE_DB",
+				"type": "varchar"
+			},
+			{
+				"name": "SOURCE_QUERY",
+				"type": "text"
+			},
+			{
+				"name": "DEST_SCHEMA",
+				"type": "varchar"
+			},
+			{
+				"name": "DEST_TABLE",
+				"type": "varchar"
+			},
+			{
+				"name": "EXIT_FLAG",
+				"type": "char"
+			},
+			{
+				"name": "DEST_DB",
+				"type": "varchar"
+			},
+			{
+				"name": "Is_Active",
+				"type": "bit"
+			},
+			{
+				"name": "Watermark_Value",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Is_Watermark",
+				"type": "bit"
+			},
+			{
+				"name": "ACTIVITY_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "SERVER_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "JOB_NAME",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "adf_etl_configuration"
+		}
+	}
+}
