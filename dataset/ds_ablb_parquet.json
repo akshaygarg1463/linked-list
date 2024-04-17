@@ -1,0 +1,32 @@
+{
+	"name": "ds_ablb_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Parqute",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"File_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().File_name",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@{utcNow('yyyy')}'/'@{utcNow('MMM')}'/'@{utcNow('dd')}",
+					"type": "Expression"
+				},
+				"container": "destination"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
